@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ---------------- SOBRE NÓS ---------------- */
+
+.sobrenos {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  line-height: 1.6;
+  background-color: #0b3b2f;
+}
+
+main {
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* BLOCO INSTITUCIONAL */
+.bloco-institucional {
+  display: flex;
+  gap: 1.5rem;
+  background: #fafaf6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background-image: radial-gradient(123% 108% at 50% 0%, #0b3b42, #082a22 100%);
+  backdrop-filter: blur(100px);
+}
+
+.bloco-img img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Limitar imagens de bloco quando dentro de .bloco-conteudo (index) */
+.bloco-conteudo .bloco-img img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}
+
+/* Se o conteúdo estiver invertido (imagem à direita), reduzir levemente a largura */
+.bloco-conteudo.reverse .bloco-img img {
+  max-width: 280px;
+}
+
+/* Garantir imagens laterais de artigos não extrapolem */
+.artigo-lateral img,
+.img-wrapper-mini img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+}
+
+.bloco-conteudo h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.bloco-conteudo h3 {
+  margin: 1.2rem 0 0.35rem;
+  font-size: 1.05rem;
+  color: #7effdf;
+}
+
+.bloco-conteudo p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+@media (max-width: 800px) {
+  .bloco-institucional {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bloco-img img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+}

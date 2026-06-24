@@ -1,0 +1,377 @@
+/* ---------------- HEADER ---------------- */
+.header {
+  background: linear-gradient(to bottom, #0b3b42 0%, #0a3339 100%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.header > a {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.header .logo-text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #0b0b0b;
+  background: #f5f1e8;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.header .logo img,
+.logo-img {
+  width: 90px;
+  height: auto;
+  display: inline-block;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+}
+
+.menu > li {
+  position: relative;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.dropbtn,
+.menu > li > a {
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
+  display: block;
+}
+
+.dropbtn:hover,
+.menu > li > a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+.menu > li > a.login-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  line-height: 0;
+  border-radius: 999px;
+}
+
+.login-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  object-fit: cover;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.menu > li > a.login-link:hover {
+  border-radius: 999px;
+}
+
+/* ---------- SUBMENU ---------- */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  backdrop-filter: blur(6px);
+  background: rgba(11, 59, 66, 0.85);
+  padding: 6px 0;
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.submenu li {
+  width: 100%;
+}
+
+.submenu li a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 0;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.submenu li a:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- ABERTURA ---------- */
+.dropdown.open .submenu {
+  display: flex;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dropdown:hover .submenu {
+    display: flex;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.menu-toggle img {
+  width: 28px;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .header {
+    padding: 12px 14px;
+  }
+
+  .header .logo-text {
+    font-size: 1.05rem;
+    padding: 4px 7px;
+    letter-spacing: 1px;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .menu-toggle img {
+    width: 22px;
+  }
+
+  .header nav {
+    width: 100%;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 12px;
+    background: rgba(11, 59, 66, 0.95);
+    border-radius: 10px;
+  }
+
+  .header.menu-open .menu {
+    display: flex;
+  }
+
+  .menu > li {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .dropbtn,
+  .menu > li > a {
+    width: 100%;
+    text-align: left;
+    padding: 12px 14px;
+    font-size: 1rem;
+  }
+
+  .menu > li > a.login-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .submenu {
+    position: static;
+    transform: none;
+    width: 100%;
+    backdrop-filter: none;
+    background: rgba(11, 59, 66, 0.85);
+    border-radius: 0;
+  }
+
+  .submenu li a {
+    text-align: left;
+    padding: 10px 14px;
+  }
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+  background: linear-gradient(to bottom, #0b3b2f 0%, #0b3b42 100%);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-main {
+  width: 100%;
+  margin: 0;
+  padding: 30px clamp(12px, 2.8vw, 30px);
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(260px, 1fr) minmax(
+      120px,
+      170px
+    );
+  align-items: start;
+  gap: 14px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-left {
+  align-items: flex-start;
+  text-align: left;
+  justify-self: start;
+}
+
+.footer-logo {
+  width: 80px;
+}
+
+.footer-image-box {
+  width: 180px;
+  height: 90px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.footer-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer-contacts {
+  align-items: flex-start;
+  text-align: left;
+  justify-self: center;
+  max-width: 340px;
+}
+
+.footer-title {
+  font-size: 1.04rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.94rem;
+  line-height: 1.4;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.contact-item-address {
+  margin-top: 2px;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: invert(1) brightness(2);
+}
+
+.footer-right-logos {
+  align-items: flex-end;
+  gap: 15px;
+  justify-self: end;
+}
+
+.footer-logo-small {
+  width: 150px;
+}
+
+.footer-bottom {
+  background: #0f1f16;
+  text-align: center;
+  padding: 11px 16px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 22px;
+    padding: 24px 12px;
+  }
+
+  .footer-left,
+  .footer-contacts,
+  .footer-right-logos {
+    align-items: center;
+    text-align: center;
+    justify-self: center;
+  }
+
+  .footer-contacts {
+    max-width: 420px;
+  }
+
+  .contact-item {
+    justify-content: center;
+  }
+
+  .footer-logo {
+    width: 64px;
+  }
+
+  .footer-logo-small {
+    width: min(36vw, 120px);
+  }
+
+  .footer-image-box {
+    width: 150px;
+    height: 70px;
+  }
+
+  .footer-right-logos {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .footer-bottom {
+    font-size: 0.7rem;
+  }
+}

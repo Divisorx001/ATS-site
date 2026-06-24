@@ -1,0 +1,1072 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --tone-deep: #0b3b42;
+  --tone-mid: #1f5f55;
+  --tone-soft: #2f7f66;
+  --tone-accent: #63cf9f;
+  --tone-ink: #0b251f;
+}
+
+/* fundo de cor sólida para mesclar com a hero */
+.home-gradient-sections {
+  position: relative;
+  background-color: #0b3b2f;
+}
+
+.home-gradient-sections > .institucional,
+.home-gradient-sections > .sec-areas,
+.home-gradient-sections > .sec-producao {
+  background: transparent;
+}
+
+.home-gradient-sections .institucional::before {
+  content: none;
+}
+
+/* ---------------- section 1 e 2 ---------------- */
+.institucional {
+  background:
+    radial-gradient(
+      1200px 500px at -10% 0%,
+      rgba(134, 224, 185, 0.24),
+      transparent 62%
+    ),
+    radial-gradient(
+      980px 520px at 108% 92%,
+      rgba(31, 112, 85, 0.38),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      var(--tone-deep) 0%,
+      var(--tone-mid) 52%,
+      var(--tone-soft) 100%
+    );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  isolation: isolate;
+}
+
+.institucional::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 31, 26, 0.13) 0%,
+    rgba(11, 45, 34, 0.11) 50%,
+    rgba(8, 31, 26, 0.17) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.institucional > .bloco {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.institucional > .bloco > .veil {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.institucional .bloco-texto {
+  color: #eaf7f7;
+}
+
+.institucional .bloco-texto p {
+  color: rgba(234, 247, 247, 0.92);
+}
+
+.institucional .btn {
+  background: #3f7a63;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 5px 10px rgba(4, 24, 34, 0.18);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.institucional .btn:hover {
+  background: #346a56;
+  box-shadow: 0 6px 12px rgba(4, 24, 34, 0.2);
+}
+
+/* Entrada sequencial das seções 1 e 2: texto primeiro, imagem depois */
+.institucional .bloco-conteudo.seq-reveal .bloco-texto,
+.institucional .bloco-conteudo.seq-reveal .bloco-img {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 520ms ease,
+    transform 520ms ease;
+  will-change: opacity, transform;
+}
+
+.institucional .bloco-conteudo.seq-reveal.is-visible .bloco-texto {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 70ms;
+}
+
+.institucional .bloco-conteudo.seq-reveal.is-visible .bloco-img {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 330ms;
+}
+
+/* div central */
+.bloco {
+  width: 100%;
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* véu em largura total */
+.veil {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: none;
+  padding: 40px 20px;
+}
+
+/* conteúdo centralizado */
+.bloco-conteudo {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* inversão de layout */
+.bloco-conteudo.reverse {
+  flex-direction: row-reverse;
+}
+.bloco-img {
+  width: 100%;
+}
+
+/* imagem */
+.bloco-img {
+  flex: 1;
+}
+
+.bloco-img img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+  .bloco-img img {
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* ---------------- COMPOSICAO DE NOTICIAS ---------------- */
+.news-composition {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.news-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.news-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #0b1f1a;
+  min-height: 160px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+}
+
+.news-main {
+  height: 280px;
+}
+
+.news-wide {
+  flex: 2;
+  height: 190px; /* o maior de baixo */
+}
+
+.news-narrow {
+  flex: 1;
+  height: 190px; /* o menor de baixo */
+}
+
+.news-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-width: none;
+}
+
+.news-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.news-caption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.news-card:hover::after,
+.news-card:hover .news-caption {
+  opacity: 1;
+}
+
+/* Garantir que a composicao nao herde limites de imagem do bloco */
+.bloco-img .news-composition img {
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  .news-main {
+    height: 200px;
+  }
+
+  .news-wide,
+  .news-narrow {
+    height: 140px;
+  }
+}
+
+@media (max-width: 700px) {
+  .news-row {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .news-wide,
+  .news-narrow {
+    height: 130px;
+  }
+
+  .news-main {
+    height: 200px;
+  }
+
+  .news-caption {
+    font-size: 0.85rem;
+  }
+}
+
+/* Limits for imagens when used inside bloco-conteudo to avoid large right-side images */
+.bloco-conteudo .bloco-img img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}
+
+.bloco-conteudo.reverse .bloco-img img {
+  max-width: 280px;
+}
+
+.artigo-lateral img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+}
+
+/* texto */
+.bloco-texto {
+  flex: 1;
+  text-align: center;
+}
+
+.bloco-texto h2 {
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
+}
+
+.bloco-texto p {
+  max-width: 520px;
+  /* limita a largura do texto */
+  margin: 0 auto 20px;
+  /* centraliza e dá espaço embaixo */
+  line-height: 1.6;
+  font-size: 1.02rem;
+  /* menos espaçado entre linhas */
+  text-align: justify;
+  /* aparência de bloco mais “fechada” */
+}
+
+/* ---------------- BOTÃO ---------------- */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: rgb(60, 120, 60);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.btn:hover {
+  background: rgb(40, 100, 40);
+}
+
+@media (max-width: 800px) {
+  .bloco {
+    padding: 50px 12px;
+  }
+
+  .veil {
+    padding: 24px 12px;
+  }
+
+  .bloco-conteudo {
+    flex-direction: column;
+    text-align: left;
+    gap: 18px;
+  }
+
+  .bloco-conteudo.reverse {
+    flex-direction: column;
+    /* ignora a inversao no mobile */
+  }
+
+  .bloco-texto h2 {
+    font-size: 1.2rem;
+  }
+
+  .bloco-texto p {
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .news-composition {
+    gap: 10px;
+  }
+
+  .news-row {
+    gap: 8px;
+  }
+
+  .bloco-img {
+    width: 100%;
+  }
+
+  .bloco-img img {
+    max-width: 100%;
+  }
+
+  .bloco-texto {
+    width: 100%;
+  }
+  .hero-placeholder {
+    min-height: 170px;
+  }
+}
+
+/* ---------------- SECAO AREAS ---------------- */
+.sec-areas {
+  background:
+    radial-gradient(
+      1120px 480px at 8% 10%,
+      rgba(132, 224, 185, 0.26),
+      transparent 62%
+    ),
+    radial-gradient(
+      900px 420px at 92% 90%,
+      rgba(20, 99, 78, 0.43),
+      transparent 64%
+    ),
+    linear-gradient(180deg, #1b5e49 0%, #1f7b5c 55%, #18624d 100%);
+  padding: 80px 20px 90px;
+  color: #ffffff;
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
+.areas-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.areas-inner h2 {
+  font-size: 2.6rem;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  text-shadow: 0 6px 18px rgba(3, 18, 12, 0.28);
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.area-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f4fbfb 100%);
+  color: #17352b;
+  border-radius: 20px;
+  padding: 16px 18px 22px;
+  box-shadow: 0 18px 34px rgba(5, 24, 17, 0.22);
+  border: 1px solid rgba(33, 121, 91, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  min-height: 320px;
+  text-decoration: none;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.area-card::before {
+  content: none;
+}
+
+.area-card:hover {
+  box-shadow: 0 12px 22px rgba(4, 18, 12, 0.2);
+  border-color: rgba(58, 158, 115, 0.52);
+}
+
+.area-card:focus-visible {
+  outline: 3px solid rgba(172, 240, 210, 0.72);
+  outline-offset: 4px;
+}
+
+.area-img {
+  width: 100%;
+  height: 150px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.area-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.area-body h3 {
+  margin: 0;
+  font-size: 1.07rem;
+  letter-spacing: 0;
+  color: #18372d;
+}
+
+.area-body {
+  text-align: left;
+}
+
+.area-body p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  color: #4d6960;
+}
+
+.area-arrow {
+  margin-top: auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: #edf5ef;
+  color: #2e6650;
+  font-size: 0;
+  border: 1px solid rgba(46, 102, 80, 0.25);
+  box-shadow: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.area-arrow::before {
+  content: "\2193";
+  color: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.area-card:hover .area-arrow {
+  background: #e3efe8;
+  border-color: rgba(46, 102, 80, 0.38);
+}
+
+@media (max-width: 900px) {
+  .areas-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .area-card {
+    min-height: auto;
+    padding: 14px 14px 18px;
+  }
+
+  .area-img {
+    height: 140px;
+  }
+}
+
+/* ---------------- SECTION 3 — Produção Científica ---------------- */
+.sec-producao {
+  width: 100%;
+  padding: 90px 20px;
+  background:
+    radial-gradient(
+      1200px 500px at -10% 0%,
+      rgba(134, 224, 185, 0.24),
+      transparent 62%
+    ),
+    radial-gradient(
+      980px 520px at 108% 92%,
+      rgba(31, 112, 85, 0.38),
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      var(--tone-deep) 0%,
+      var(--tone-mid) 52%,
+      var(--tone-soft) 100%
+    );
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  content-visibility: auto;
+  contain-intrinsic-size: 780px;
+}
+
+.sec-container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+/* TEXTO */
+.sec-texto {
+  flex: 0.9;
+  color: #f1f6f4;
+  /* texto branco para contraste no verde escuro */
+}
+
+.sec-texto h2 {
+  font-size: 2.5rem;
+  margin-bottom: 18px;
+  line-height: 1.15;
+}
+
+.sec-texto p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 50ch;
+  color: rgba(241, 246, 244, 0.88);
+  /* branco suavizado */
+}
+
+/* GRID DE CARDS */
+.sec-cards {
+  flex: 1.1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  grid-auto-rows: 230px;
+  /* leve deslocamento visual */
+  margin-top: 40px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px 20px;
+  text-align: left;
+  height: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+  text-decoration: none;
+  color: inherit;
+  border-left: 4px solid #7fd1b8;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: #2fb08d;
+}
+
+/* FOCO ACESSÍVEL */
+.card:focus-visible {
+  outline: 3px solid rgba(127, 209, 184, 0.65);
+  outline-offset: 4px;
+}
+
+/* ÍCONE */
+.card .icon {
+  font-size: 1.9rem;
+  margin-bottom: 12px;
+}
+
+/* TÍTULO */
+.card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #10231d;
+  /* escuro elegante no branco */
+}
+
+/* TEXTO */
+.card p {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #3e4a57;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+  .sec-container {
+    gap: 40px;
+  }
+
+  .sec-cards {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .sec-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .sec-texto h2 {
+    font-size: 2rem;
+  }
+
+  .sec-texto p {
+    margin: 0 auto;
+    font-size: 0.95rem;
+  }
+
+  .sec-cards {
+    grid-template-columns: 1fr;
+    margin-top: 16px;
+    grid-auto-rows: auto;
+  }
+
+  .card {
+    text-align: left;
+    border-left: none;
+    border-top: 6px solid #4bc78d;
+  }
+}
+
+/* ---------------- SECTION 4 — Notícias ---------------- */
+.sec-noticias {
+  width: 100%;
+  background-color: #0b3b2f;
+}
+
+/* ===== BARRA SUPERIOR ===== */
+.noticias-barra {
+  width: 100%;
+  background: linear-gradient(to bottom, #0b3b42 0%, #0a3339 100%);
+  color: #f3fff8;
+  text-align: center;
+  padding: 14px 0;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(7, 32, 24, 0.62);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+}
+
+/* ===== CONTEÚDO ===== */
+.noticias-conteudo {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 70px 20px;
+  display: grid;
+  grid-template-columns: 1.05fr 1.95fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Coluna da direita: grid + paginação */
+.coluna-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ===== NOTÍCIA GRANDE ===== */
+.noticia-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.img-wrapper-grande {
+  width: 100%;
+  /* altura grande, mas sem virar um banner infinito */
+  height: 550px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(10, 25, 40, 0.1);
+}
+
+.img-wrapper-grande img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sobrepor legenda à imagem principal (barra preta translúcida) */
+.img-wrapper-grande {
+  position: relative;
+}
+
+.img-wrapper-grande .legenda-grande {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  padding: 18px 20px;
+  box-sizing: border-box;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.legenda-grande {
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: #2a1f16;
+  max-width: 55ch;
+}
+
+/* ===== GRID ===== */
+.grid-noticias {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-content: start;
+}
+
+/* ===== CARDS MINI ===== */
+.card-mini {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(10, 25, 40, 0.1);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.22s ease;
+}
+
+.card-mini:hover {
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.14);
+}
+
+/* LIMITADOR DA IMAGEM PEQUENA */
+.img-wrapper-mini {
+  width: 100%;
+  height: 260px; /* aumentado para imagens um pouco maiores */
+  overflow: hidden;
+}
+
+.img-wrapper-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cartões pequenos: legenda sobreposta em fundo preto translúcido */
+.card-mini {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-mini p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  padding: 12px;
+  box-sizing: border-box;
+  font-size: 0.92rem;
+}
+
+.card-mini p {
+  padding: 14px 14px 16px;
+  font-size: 0.96rem;
+  line-height: 1.4;
+  color: #fff; /* legenda sobreposta agora branca */
+}
+
+/* ===== PAGINAÇÃO ===== */
+.paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 0 0;
+}
+
+.pg-bolinhas {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bolinhas */
+.pg-bolinha {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(30, 58, 95, 0.35);
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.pg-bolinha:hover {
+  border-color: rgba(30, 58, 95, 0.65);
+}
+
+/* Estado ativo */
+.pg-bolinha.is-active {
+  background: #1e3a5f;
+  border-color: #1e3a5f;
+}
+
+/* Setas */
+.pg-seta {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(30, 58, 95, 0.22);
+  background: rgba(255, 255, 255, 0.75);
+  color: #1e3a5f;
+  cursor: pointer;
+  transition:
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.pg-seta:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+/* Estado desabilitado */
+.pg-seta.is-disabled,
+.pg-seta:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 1000px) {
+  .noticias-conteudo {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .img-wrapper-grande {
+    height: 420px;
+  }
+
+  .grid-noticias {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .areas-inner h2 {
+    font-size: 2rem;
+  }
+
+  .sec-texto h2 {
+    font-size: 1.8rem;
+  }
+
+  .noticias-conteudo {
+    padding: 40px 16px 50px;
+    gap: 24px;
+  }
+
+  .img-wrapper-grande {
+    height: 240px;
+  }
+
+  .grid-noticias {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .img-wrapper-mini {
+    height: 140px;
+  }
+
+  .img-wrapper-grande .legenda-grande {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  .card-mini p {
+    padding: 10px 10px 12px;
+    font-size: 0.78rem;
+  }
+
+  .noticias-barra {
+    letter-spacing: 0.06em;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .area-card {
+    padding: 14px;
+  }
+
+  .area-img {
+    height: 150px;
+  }
+}
+
+/* ===== Pequenas animações (Tailwind-like utilities) ===== */
+@keyframes tw-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: tw-fade-up 700ms cubic-bezier(0.16, 0.84, 0.44, 1) both;
+}
+
+.animate-delay-150 {
+  animation-delay: 150ms;
+}
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+/* Hero placeholder styling */
+.hero-placeholder {
+  min-height: 200px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 40, 40, 0.9),
+    rgba(6, 30, 30, 0.7)
+  );
+  color: #fff;
+  padding: 0;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  text-align: center;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Aplicar animação sutil às seções principais */
+.bloco-conteudo.animate-fade-up,
+.sec-container.animate-fade-up {
+  opacity: 1;
+}
+
+/* Ao carregar via JS as classes são aplicadas — aqui é só fallback */
+.bloco-conteudo.animate-fade-up {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .institucional .bloco-conteudo.seq-reveal .bloco-texto,
+  .institucional .bloco-conteudo.seq-reveal .bloco-img {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

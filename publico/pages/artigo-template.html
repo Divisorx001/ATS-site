@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/assets/css/includes.css">
+      <link rel="stylesheet" href="/assets/css/pages.css">
+<title>Notícia</title>
+   </head>
+   <body class="pagina-noticia">
+
+
+<!----------------------------cabeçalho (include) --------------------------------->
+<div data-include="/includes/header.html"></div>
+
+
+ <!----------------------------main --------------------------------->
+
+
+      <main class="noticia-detalhe">
+         <div class="noticia-layout">
+            <div class="noticia-conteudo">
+            <article class="noticia-corpo">
+               <h1 id="titulo"></h1>
+               <div class="noticia-meta">
+                  <span id="autor"></span>
+               </div>
+               <p id="descricao-longa"></p>
+               <a href="/pages/artigos.html" class="voltar">? Voltar</a>
+            </article>
+
+            <aside class="noticia-side">
+               <h3>Mais Notícias</h3>
+               <ul id="related" class="related-list">
+                  <!-- itens relacionados serão inseridos pelo script -->
+               </ul>
+
+               <div class="paginador-bloco">
+                  <div id="react-pagination"></div>
+               </div>
+            </aside>
+            </div>
+         </div>
+      </main>
+
+
+
+
+<!----------------------------footer --------------------------------->
+
+<div data-include="/includes/footer.html"></div>
+
+<script src="/assets/js/include-partials.js"></script>
+
+
+<!----------------------------script --------------------------------->
+      <script>
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get("id"));
+
+  fetch("/assets/data/dados.json")
+    .then(res => res.json())
+    .then(artigos => {
+      const artigo = artigos.find(a => a.id === id);
+      if (!artigo) return;
+
+      document.getElementById("titulo").textContent = artigo.titulo || "Sem titulo";
+      document.getElementById("descricao-longa").textContent = artigo.descricaoLonga || "";
+      document.title = artigo.titulo || "Artigo";
+
+      const autorEl = document.getElementById("autor");
+      if (autorEl) {
+        autorEl.textContent = Array.isArray(artigo.autores) && artigo.autores.length
+          ? `Autor(es): ${artigo.autores.join(", ")}`
+          : "Liga ATS";
+      }
+
+      const relatedEl = document.getElementById("related");
+      const others = artigos.filter(a => a.id !== id).slice(0, 5);
+      others.forEach(a => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = `/pages/artigo-template.html?id=${a.id}`;
+        link.textContent = a.titulo || `Artigo ${a.id}`;
+        li.appendChild(link);
+        relatedEl.appendChild(li);
+      });
+    });
+</script>
+
+      
+   </body>
+</html>
